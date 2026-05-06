@@ -282,7 +282,14 @@
         color: var(--muted);
         font-size: 14px;
         text-align: center;
-        padding: 20px;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .gallery-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
 
       .gallery-meta {
@@ -755,28 +762,36 @@ OpenClaw Agent（每个 Agent 独立 Lark 身份）
         </div>
         <div class="gallery-list">
           <div class="gallery-item">
-            <div class="gallery-frame">TriCoach 训练状态页截图位</div>
+            <div class="gallery-frame">
+              <img src="./tricoach-dashboard.jpeg" alt="TriCoach dashboard screenshot" />
+            </div>
             <div class="gallery-meta">
               <strong>TriCoach / Dashboard</strong>
               <span>展示 CTL / ATL / TSB 和近 90 天体能趋势，让教练回复基于真实训练上下文。</span>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-frame">TriCoach 伤病对话截图位</div>
+            <div class="gallery-frame">
+              <img src="./tricoach-chat.jpeg" alt="TriCoach injury conversation screenshot" />
+            </div>
             <div class="gallery-meta">
               <strong>TriCoach / Injury Conversation</strong>
               <span>围绕伤病假设持续追问，而不是直接给结论，体现恢复场景下的 agent runtime loop。</span>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-frame">TriCoach 记忆与日志截图位</div>
+            <div class="gallery-frame">
+              <img src="./tricoach-memory.jpeg" alt="TriCoach memory and logs screenshot" />
+            </div>
             <div class="gallery-meta">
               <strong>TriCoach / Memory & Logs</strong>
               <span>把对话沉淀成主题、摘要和历史记录，支持后续多层调用，而不是每次重新开始。</span>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-frame">VOC Agents Base 截图位</div>
+            <div class="gallery-frame">
+              <img src="./voc-cleaned-voices.png" alt="VOC cleaned voices base screenshot" />
+            </div>
             <div class="gallery-meta">
               <strong>VOC Agents / cleaned_voices</strong>
               <span>展示共享事实层，说明原始消息如何进入结构化表，再供后续分析与需求聚合使用。</span>
