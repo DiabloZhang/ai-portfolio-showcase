@@ -259,22 +259,26 @@
         font-size: 14px;
       }
 
-      .gallery-list {
+      .inline-gallery {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
         margin-top: 18px;
       }
 
-      .gallery-item {
+      .inline-gallery.two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .inline-item {
         border: 1px solid var(--line);
         border-radius: 18px;
         background: #fff;
         overflow: hidden;
       }
 
-      .gallery-frame {
-        min-height: 220px;
+      .inline-frame {
+        min-height: 180px;
         background: linear-gradient(135deg, rgba(180, 79, 47, 0.06), rgba(35, 90, 82, 0.06));
         display: flex;
         align-items: center;
@@ -286,23 +290,25 @@
         overflow: hidden;
       }
 
-      .gallery-frame img {
+      .inline-frame img {
         display: block;
         width: 100%;
         height: auto;
+        max-height: 480px;
+        object-fit: contain;
       }
 
-      .gallery-meta {
+      .inline-meta {
         padding: 14px 16px 16px;
       }
 
-      .gallery-meta strong {
+      .inline-meta strong {
         display: block;
         margin-bottom: 6px;
         font-size: 15px;
       }
 
-      .gallery-meta span {
+      .inline-meta span {
         color: var(--muted);
         font-size: 14px;
       }
@@ -451,7 +457,9 @@
         .hero-grid,
         .project-grid,
         .method-grid,
-        .flow {
+        .flow,
+        .inline-gallery,
+        .inline-gallery.two {
           grid-template-columns: 1fr;
         }
 
@@ -546,8 +554,37 @@
           <div class="card">
             <div class="label teal">Suggested Screens</div>
             <div class="shot">
-              <strong>展示图片统一放在文档后部</strong>
-              <span>这里先聚焦设计思路和能力拆解。训练状态页、伤病对话页、记忆与日志页，以及 Base 事实层截图统一放到文档末尾，阅读节奏会更干净。</span>
+              <strong>关键界面展示</strong>
+              <span>这三张图分别对应训练状态感知、伤病恢复对话，以及记忆沉淀与后续调用，能比较完整地说明 TriCoach 如何把人和 Agent 的协作串起来。</span>
+              <div class="inline-gallery">
+                <div class="inline-item">
+                  <div class="inline-frame">
+                    <img src="./tricoach-dashboard.jpeg" alt="TriCoach dashboard screenshot" />
+                  </div>
+                  <div class="inline-meta">
+                    <strong>Dashboard</strong>
+                    <span>把训练状态、体能趋势和恢复信号前置给用户与教练。</span>
+                  </div>
+                </div>
+                <div class="inline-item">
+                  <div class="inline-frame">
+                    <img src="./tricoach-chat.jpeg" alt="TriCoach injury conversation screenshot" />
+                  </div>
+                  <div class="inline-meta">
+                    <strong>Injury Conversation</strong>
+                    <span>围绕伤病假设持续追问，而不是一次性给出结论。</span>
+                  </div>
+                </div>
+                <div class="inline-item">
+                  <div class="inline-frame">
+                    <img src="./tricoach-memory.jpeg" alt="TriCoach memory and logs screenshot" />
+                  </div>
+                  <div class="inline-meta">
+                    <strong>Memory & Logs</strong>
+                    <span>把对话沉淀成可被后续调用的主题、摘要和历史记录。</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -618,10 +655,12 @@
           <div class="card">
             <div class="label teal">Suggested Screens</div>
             <div class="shot">
-              <strong>截图位 C：系统架构图</strong>
-              <span>这里直接用项目设计说明里的核心架构，突出它不是单点 agent，而是一套通信总线 + 数据中心 + 角色协作系统。</span>
-              <div class="arch-box">
-                <pre>Project Lark 群（通信总线）
+              <strong>关键界面与结构展示</strong>
+              <span>一张图说明系统骨架，一张图说明事实层长什么样。两者放在一起，能更直观地看出这个项目不是单点 Agent，而是一套可协作、可流转、可沉淀的数据与任务系统。</span>
+              <div class="inline-gallery two">
+                <div class="inline-item">
+                  <div class="arch-box">
+                    <pre>Project Lark 群（通信总线）
 ├── 任务发布   → Human 在群里发消息 @ Agent
 ├── Agent 接收 → OpenClaw 监听群 chat_id，@ 触发对应 skill
 ├── 任务结果   → Agent 写 Lark Base + 群里广播
@@ -637,54 +676,22 @@ OpenClaw Agent（每个 Agent 独立 Lark 身份）
 ├── channel:       project_group_chat_id
 ├── trigger:       @ pattern（@Cleaner、@Analyst...）
 └── system_prompt: 通用 skill + 角色 skill（初始化时 human_master 指令注入）</pre>
-              </div>
-            </div>
-            <div class="shot image-like" style="margin-top: 14px;">
-              <strong>截图位 D：Base 中的 cleaned_voices 事实层</strong>
-              <span>这里强调的是“共享事实层 + 私有分析层”的设计思路：原始消息经过清洗后进入结构化表，再供后续分析与需求聚合使用。</span>
-              <div class="mini-base">
-                <div class="mini-base-toolbar"></div>
-                <div class="mini-base-body">
-                  <div class="mini-base-nav">
-                    <div>project_config</div>
-                    <div>agent_registry</div>
-                    <div>skill_registry</div>
-                    <div>tasks</div>
-                    <div>raw_messages</div>
-                    <div>raw_voices</div>
-                    <div class="active">cleaned_voices</div>
                   </div>
-                  <div class="mini-base-table">
-                    <div class="mini-base-grid">
-                      <div class="h">ID</div>
-                      <div class="h">priority</div>
-                      <div class="h">customer</div>
-                      <div class="h">summary</div>
-                      <div class="h">status</div>
-                      <div class="h">tags</div>
-                      <div>NO.001</div>
-                      <div>Medium</div>
-                      <div>华东院</div>
-                      <div>结构化后的 VOC 摘要与问题描述...</div>
-                      <div>open</div>
-                      <div>AI功能</div>
-                      <div>NO.002</div>
-                      <div>Low</div>
-                      <div>传音</div>
-                      <div>来自群聊 thread 的清洗结果...</div>
-                      <div>open</div>
-                      <div>高管反馈</div>
-                      <div>NO.003</div>
-                      <div>High</div>
-                      <div>有赞</div>
-                      <div>支持后续需求聚合、优先级判断与分析报告...</div>
-                      <div>open</div>
-                      <div>计费/额度</div>
-                    </div>
+                  <div class="inline-meta">
+                    <strong>System Architecture</strong>
+                    <span>从群聊触发、到 Base 写入、再到角色分工，构成一条完整协作链路。</span>
+                  </div>
+                </div>
+                <div class="inline-item">
+                  <div class="inline-frame">
+                    <img src="./voc-cleaned-voices.png" alt="VOC cleaned voices base screenshot" />
+                  </div>
+                  <div class="inline-meta">
+                    <strong>cleaned_voices Fact Layer</strong>
+                    <span>原始消息经过清洗后进入共享事实层，再供后续分析、聚合和报告使用。</span>
                   </div>
                 </div>
               </div>
-              <span>如果你要把你刚发的那张真实截图直接嵌进 HTML，我可以下一步替换成原图。</span>
             </div>
           </div>
         </div>
@@ -747,55 +754,6 @@ OpenClaw Agent（每个 Agent 独立 Lark 身份）
           <div class="method">
             <h4>把 AI 做成真实工具</h4>
             <p>我在意的不是“这个东西像不像 AI”，而是“它有没有把某项工作真的变得更简单、更快、更可持续”。</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <h2>展示图片</h2>
-            <p>
-              这里统一放界面和系统截图，作为前面设计思路的视觉证据。当前先保留展示位，后续可以直接替换成真实图片文件。
-            </p>
-          </div>
-        </div>
-        <div class="gallery-list">
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="./tricoach-dashboard.jpeg" alt="TriCoach dashboard screenshot" />
-            </div>
-            <div class="gallery-meta">
-              <strong>TriCoach / Dashboard</strong>
-              <span>展示 CTL / ATL / TSB 和近 90 天体能趋势，让教练回复基于真实训练上下文。</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="./tricoach-chat.jpeg" alt="TriCoach injury conversation screenshot" />
-            </div>
-            <div class="gallery-meta">
-              <strong>TriCoach / Injury Conversation</strong>
-              <span>围绕伤病假设持续追问，而不是直接给结论，体现恢复场景下的 agent runtime loop。</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="./tricoach-memory.jpeg" alt="TriCoach memory and logs screenshot" />
-            </div>
-            <div class="gallery-meta">
-              <strong>TriCoach / Memory & Logs</strong>
-              <span>把对话沉淀成主题、摘要和历史记录，支持后续多层调用，而不是每次重新开始。</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="./voc-cleaned-voices.png" alt="VOC cleaned voices base screenshot" />
-            </div>
-            <div class="gallery-meta">
-              <strong>VOC Agents / cleaned_voices</strong>
-              <span>展示共享事实层，说明原始消息如何进入结构化表，再供后续分析与需求聚合使用。</span>
-            </div>
           </div>
         </div>
       </section>
