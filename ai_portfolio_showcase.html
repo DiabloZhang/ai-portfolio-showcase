@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>郭择良｜AI 项目作品集</title>
+    <style>
+      :root {
+        --bg: #f4f0e8;
+        --paper: #fbf8f3;
+        --ink: #1f1a17;
+        --muted: #6f665f;
+        --line: #d7cfc6;
+        --accent: #b44f2f;
+        --accent-2: #235a52;
+        --accent-3: #d9912b;
+        --shadow: 0 20px 60px rgba(31, 26, 23, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(180, 79, 47, 0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(35, 90, 82, 0.08), transparent 24%),
+          var(--bg);
+        line-height: 1.65;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 40px 0 80px;
+      }
+
+      .hero {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        border-radius: 28px;
+        padding: 44px;
+        margin-bottom: 28px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -60px;
+        top: -60px;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: rgba(180, 79, 47, 0.08);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero p {
+        margin: 0 0 14px;
+        max-width: 700px;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.5);
+        align-self: end;
+      }
+
+      .meta-card h3 {
+        margin: 0 0 12px;
+        font-size: 14px;
+      }
+
+      .meta-card div {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 6px 0;
+      }
+
+      .tiny-name {
+        margin: 4px 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+      }
+
+      .section {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        border-radius: 28px;
+        padding: 34px;
+        margin-bottom: 24px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+        margin-bottom: 22px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-head p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        max-width: 720px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 12px;
+        background: #fff;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .repo-link {
+        margin-top: 16px;
+        font-size: 14px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 22px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .label {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .label.teal {
+        color: var(--accent-2);
+      }
+
+      .label.amber {
+        color: var(--accent-3);
+      }
+
+      h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+
+      .summary {
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+
+      ul {
+        margin: 10px 0 0 18px;
+        padding: 0;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      .quote {
+        border-left: 3px solid var(--accent);
+        padding-left: 14px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .shot {
+        border: 1px dashed #b9afa5;
+        border-radius: 18px;
+        min-height: 220px;
+        padding: 18px;
+        background:
+          linear-gradient(135deg, rgba(180, 79, 47, 0.05), rgba(35, 90, 82, 0.05));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .shot.image-like {
+        min-height: 280px;
+        justify-content: flex-start;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.9), rgba(247,243,236,0.95)),
+          linear-gradient(135deg, rgba(180, 79, 47, 0.05), rgba(35, 90, 82, 0.05));
+      }
+
+      .shot strong {
+        font-size: 16px;
+      }
+
+      .shot span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .gallery-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .gallery-item {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .gallery-frame {
+        min-height: 220px;
+        background: linear-gradient(135deg, rgba(180, 79, 47, 0.06), rgba(35, 90, 82, 0.06));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .gallery-meta {
+        padding: 14px 16px 16px;
+      }
+
+      .gallery-meta strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+
+      .gallery-meta span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .arch-box {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        background: #fff;
+        margin-top: 14px;
+      }
+
+      .arch-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.7;
+        color: #453d37;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .mini-base {
+        margin-top: 8px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .mini-base-toolbar {
+        height: 38px;
+        background: #f1ede6;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mini-base-body {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        min-height: 180px;
+      }
+
+      .mini-base-nav {
+        border-right: 1px solid var(--line);
+        background: #f8f4ee;
+        padding: 10px 8px;
+      }
+
+      .mini-base-nav div {
+        font-size: 12px;
+        color: var(--muted);
+        padding: 6px 8px;
+        border-radius: 8px;
+        margin-bottom: 4px;
+      }
+
+      .mini-base-nav div.active {
+        background: rgba(104, 123, 255, 0.12);
+        color: #4e60cc;
+        font-weight: 600;
+      }
+
+      .mini-base-table {
+        padding: 10px;
+      }
+
+      .mini-base-grid {
+        display: grid;
+        grid-template-columns: 90px 90px 100px 1fr 90px 110px;
+        gap: 1px;
+        background: #ddd5cb;
+      }
+
+      .mini-base-grid div {
+        background: #fff;
+        min-height: 34px;
+        padding: 8px;
+        font-size: 11px;
+        color: #6a625c;
+      }
+
+      .mini-base-grid .h {
+        background: #faf8f4;
+        font-weight: 700;
+        color: #514944;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .flow-item {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+        background: #fff;
+      }
+
+      .flow-item b {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .flow-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .method {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        background: #fff;
+      }
+
+      .method h4 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      .method p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer {
+        color: var(--muted);
+        text-align: center;
+        padding-top: 8px;
+        font-size: 14px;
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .project-grid,
+        .method-grid,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .hero,
+        .section {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">AI Portfolio / Builder Case Studies</div>
+        <div class="hero-grid">
+          <div>
+            <h1>把 AI 从“工具”做成“可用工作流”</h1>
+            <div class="tiny-name">郭择良</div>
+            <p>
+              我做 AI 项目时，不是先想模型能不能回答问题，而是先看一个真实流程里，
+              哪些环节值得被重做，哪些判断适合交给 Agent，哪些部分必须保留人来接住。
+            </p>
+            <p>
+              下面两个项目分别对应我最关心的两类能力：
+              一类是长期、个性化、带记忆的 AI 协作者；另一类是能进入真实组织流程、
+              能被持续使用的多 Agent 工作系统。
+            </p>
+            <p>
+              我希望做的，不只是更聪明的 AI，而是真正能承接工作、沉淀上下文并持续创造价值的产品。
+            </p>
+            <div class="pill-row">
+              <div class="pill">Agent Runtime</div>
+              <div class="pill">Memory</div>
+              <div class="pill">Workflow Design</div>
+              <div class="pill">Onboarding</div>
+              <div class="pill">Human-AI Collaboration</div>
+              <div class="pill">Product Thinking</div>
+            </div>
+          </div>
+          <aside class="meta-card">
+            <h3>作品关键词</h3>
+            <div>长期记忆与连续协作</div>
+            <div>Agent Runtime 与 Loop 设计</div>
+            <div>多 Agent 工作流与事实层</div>
+            <div>从真实问题到可用产品</div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>项目一：TriCoach</h2>
+            <p>
+              一个连接 Strava 的 AI 铁三教练系统。它不是简单分析运动数据，而是把训练同步、
+              体能指标、对话复盘、教练人设和长期记忆连接成一个持续协作体验。
+            </p>
+            <div class="pill-row">
+              <div class="pill">Strava Integration</div>
+              <div class="pill">Training Analytics</div>
+              <div class="pill">Proactive Coaching</div>
+              <div class="pill">Conversation Memory</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <div class="card">
+            <div class="label">Why It Matters</div>
+            <h3>我关注的不是“能聊”，而是“能长期陪练”</h3>
+            <div class="summary">
+              从 repo 可以看到，这个项目已经形成了比较完整的产品闭环：Strava 数据同步、
+              CTL/ATL/TSB 体能指标、训练日志、赛季规划、比赛前后提醒、以及教练对话页面。
+            </div>
+            <ul>
+              <li>后端基于 FastAPI，前端是 Next.js，已经不是单页 demo，而是完整 web 产品结构。</li>
+              <li>核心能力不是一次性问答，而是围绕训练复盘、疲劳预警、比赛准备、长期日志积累的持续服务。</li>
+              <li>设计文档里明确区分了 THINK / CHAT / EXTRACT 三档任务，并给不同模型分配不同职责。</li>
+              <li>对话系统会结合近 7 天训练记录、阈值数据和当前体能状态生成教练 prompt，而不是通用聊天。</li>
+              <li>我特别关注 Memory 的产品价值：对话不是即时消耗，而是会沉淀为训练笔记、周总结、月总结和赛季记录，供后续多层调用。</li>
+              <li>在伤病和恢复场景下，我关注的不只是给建议，而是设计一个带 loop 的 agent runtime：识别异常状态，持续追问上下文，记录恢复进展，并在后续对话中继续接住这个问题。</li>
+            </ul>
+            <div class="quote">
+              这个项目最能体现我的一点是：我在意 Agent 如何把一次对话变成长期记忆，并在真实生活场景里持续工作，而不是只做一轮漂亮回复。
+            </div>
+            <div class="repo-link">
+              Repo:
+              <a href="https://github.com/DiabloZhang/claudcoach" target="_blank" rel="noreferrer">github.com/DiabloZhang/claudcoach</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label teal">Suggested Screens</div>
+            <div class="shot">
+              <strong>展示图片统一放在文档后部</strong>
+              <span>这里先聚焦设计思路和能力拆解。训练状态页、伤病对话页、记忆与日志页，以及 Base 事实层截图统一放到文档末尾，阅读节奏会更干净。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 18px;">
+          <div class="label amber">Design Breakdown</div>
+          <div class="flow">
+            <div class="flow-item">
+              <b>1. 数据接入</b>
+              <p>通过 Strava OAuth 接入训练数据，用户不用手动维护训练记录。</p>
+            </div>
+            <div class="flow-item">
+              <b>2. 状态建模</b>
+              <p>用 CTL / ATL / TSB、阈值和近 7 天训练作为教练判断上下文。</p>
+            </div>
+            <div class="flow-item">
+              <b>3. 对话复盘</b>
+              <p>每次训练后主动收集训练类型、RPE、身体状态和生活干扰，不把交互做成生硬填表。</p>
+            </div>
+            <div class="flow-item">
+              <b>4. 长期记忆</b>
+              <p>把对话沉淀成训练笔记、周总结、月总结和赛季总结，让教练具备可被后续多层调用的连续理解。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>项目二：VOC Agents</h2>
+            <p>
+              一个从飞书群聊自动采集用户反馈、经 AI 清洗后写入 Lark Base 的多 Agent 系统。
+              它最有价值的地方，不是“识别反馈”本身，而是把采集、清洗、分析、报告做成了一条可重复运行的工作流。
+            </p>
+            <div class="pill-row">
+              <div class="pill">CLI Onboarding</div>
+              <div class="pill">Multi-Agent</div>
+              <div class="pill">Shared Fact Layer</div>
+              <div class="pill">Lark Base as Bus</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <div class="card">
+            <div class="label">Why It Matters</div>
+            <h3>不是做一个 Agent，而是做一个能接入组织流程的骨架</h3>
+            <div class="summary">
+              这个 repo 的亮点非常清楚：它不是单功能脚本，而是一个以 VOC 为首个落地场景的通用 Agent 协作平台。
+              真正的产品感体现在 CLI 初始化、角色注入、状态追踪和 Lark Base 数据骨架上。
+            </div>
+            <ul>
+              <li>`voc_agents init` 不是简单建表，而是带着用户完成群扫描、Base 初始化、角色配置和首轮运行。</li>
+              <li>设计文档把系统拆成 Project、Agent、Human Master、Task、Skill、Context，边界很清晰。</li>
+              <li>核心原则是“共享事实层 + 私有分析层”，避免分析结果反向污染底层事实数据。</li>
+              <li>通过 Lark Base 作为数据总线，让 Collector / Cleaner / Analyst 等不同角色协同工作。</li>
+            </ul>
+            <div class="quote">
+              这个项目最能体现我的一点是：我不只想做一个会跑的 agent，而是想把 agent 放进真实协作流程里，让它和人一起工作。
+            </div>
+            <div class="repo-link">
+              Repo:
+              <a href="https://github.com/agentic-exploration/voc_agents" target="_blank" rel="noreferrer">github.com/agentic-exploration/voc_agents</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label teal">Suggested Screens</div>
+            <div class="shot">
+              <strong>截图位 C：系统架构图</strong>
+              <span>这里直接用项目设计说明里的核心架构，突出它不是单点 agent，而是一套通信总线 + 数据中心 + 角色协作系统。</span>
+              <div class="arch-box">
+                <pre>Project Lark 群（通信总线）
+├── 任务发布   → Human 在群里发消息 @ Agent
+├── Agent 接收 → OpenClaw 监听群 chat_id，@ 触发对应 skill
+├── 任务结果   → Agent 写 Lark Base + 群里广播
+└── 关键事件   → Platform Bot 广播到群
+
+Lark Base（数据与配置中心）
+├── 配置层：project_config / agent_registry / skill_registry / init_checklist
+├── 任务层：tasks / task_logs
+├── 数据层：raw_messages / raw_voices / cleaned_voices
+└── 产出层：demands / outputs
+
+OpenClaw Agent（每个 Agent 独立 Lark 身份）
+├── channel:       project_group_chat_id
+├── trigger:       @ pattern（@Cleaner、@Analyst...）
+└── system_prompt: 通用 skill + 角色 skill（初始化时 human_master 指令注入）</pre>
+              </div>
+            </div>
+            <div class="shot image-like" style="margin-top: 14px;">
+              <strong>截图位 D：Base 中的 cleaned_voices 事实层</strong>
+              <span>这里强调的是“共享事实层 + 私有分析层”的设计思路：原始消息经过清洗后进入结构化表，再供后续分析与需求聚合使用。</span>
+              <div class="mini-base">
+                <div class="mini-base-toolbar"></div>
+                <div class="mini-base-body">
+                  <div class="mini-base-nav">
+                    <div>project_config</div>
+                    <div>agent_registry</div>
+                    <div>skill_registry</div>
+                    <div>tasks</div>
+                    <div>raw_messages</div>
+                    <div>raw_voices</div>
+                    <div class="active">cleaned_voices</div>
+                  </div>
+                  <div class="mini-base-table">
+                    <div class="mini-base-grid">
+                      <div class="h">ID</div>
+                      <div class="h">priority</div>
+                      <div class="h">customer</div>
+                      <div class="h">summary</div>
+                      <div class="h">status</div>
+                      <div class="h">tags</div>
+                      <div>NO.001</div>
+                      <div>Medium</div>
+                      <div>华东院</div>
+                      <div>结构化后的 VOC 摘要与问题描述...</div>
+                      <div>open</div>
+                      <div>AI功能</div>
+                      <div>NO.002</div>
+                      <div>Low</div>
+                      <div>传音</div>
+                      <div>来自群聊 thread 的清洗结果...</div>
+                      <div>open</div>
+                      <div>高管反馈</div>
+                      <div>NO.003</div>
+                      <div>High</div>
+                      <div>有赞</div>
+                      <div>支持后续需求聚合、优先级判断与分析报告...</div>
+                      <div>open</div>
+                      <div>计费/额度</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span>如果你要把你刚发的那张真实截图直接嵌进 HTML，我可以下一步替换成原图。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 18px;">
+          <div class="label amber">Design Breakdown</div>
+          <div class="flow">
+            <div class="flow-item">
+              <b>1. 项目初始化</b>
+              <p>一条命令完成环境检查、反馈群选择、Base 创建和角色数据写入。</p>
+            </div>
+            <div class="flow-item">
+              <b>2. 角色协作</b>
+              <p>Collector 拉消息，Cleaner 清洗为结构化事实，Analyst 基于事实层生成报告和洞察。</p>
+            </div>
+            <div class="flow-item">
+              <b>3. 事实层设计</b>
+              <p>以 cleaned_voices 作为共享公共事实，后续分析建立在稳定底层之上。</p>
+            </div>
+            <div class="flow-item">
+              <b>4. 产品化思路</b>
+              <p>把首轮可用体验拆成“初始化项目”和“拿到第一份报告”两段，减少首次使用负担。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>我在这些项目里体现出的能力</h2>
+            <p>
+              这两个项目表面上一个偏个人应用，一个偏组织工作流，但它们背后其实是同一套方法：
+              找真实问题，拆成能被 Agent 承接的步骤，再设计人机边界和可持续使用方式。
+            </p>
+          </div>
+        </div>
+
+        <div class="method-grid">
+          <div class="method">
+            <h4>从模糊问题出发</h4>
+            <p>我不是从已有方案里选功能，而是先看真实流程里最值得被重做的那一段，再反推产品形态。</p>
+          </div>
+          <div class="method">
+            <h4>把想法拆成工作流</h4>
+            <p>我更关注上下游如何接住，而不是只做中间那一段智能。好的 Agent 必须接得上真实流程。</p>
+          </div>
+          <div class="method">
+            <h4>重视 onboarding</h4>
+            <p>项目能不能被别人真的用起来，往往取决于接入成本、默认路径和第一次成功体验。</p>
+          </div>
+          <div class="method">
+            <h4>理解 memory 的价值</h4>
+            <p>记忆不是多存一点上下文，而是把对话沉淀为后续可调用的结构化经验，服务长期任务而不是单轮问答。</p>
+          </div>
+          <div class="method">
+            <h4>用结构稳定系统</h4>
+            <p>在 VOC Agents 里，我会优先稳住事实层和角色边界，因为没有稳定结构，Agent 协作很快会失真。</p>
+          </div>
+          <div class="method">
+            <h4>把 AI 做成真实工具</h4>
+            <p>我在意的不是“这个东西像不像 AI”，而是“它有没有把某项工作真的变得更简单、更快、更可持续”。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>展示图片</h2>
+            <p>
+              这里统一放界面和系统截图，作为前面设计思路的视觉证据。当前先保留展示位，后续可以直接替换成真实图片文件。
+            </p>
+          </div>
+        </div>
+        <div class="gallery-list">
+          <div class="gallery-item">
+            <div class="gallery-frame">TriCoach 训练状态页截图位</div>
+            <div class="gallery-meta">
+              <strong>TriCoach / Dashboard</strong>
+              <span>展示 CTL / ATL / TSB 和近 90 天体能趋势，让教练回复基于真实训练上下文。</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-frame">TriCoach 伤病对话截图位</div>
+            <div class="gallery-meta">
+              <strong>TriCoach / Injury Conversation</strong>
+              <span>围绕伤病假设持续追问，而不是直接给结论，体现恢复场景下的 agent runtime loop。</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-frame">TriCoach 记忆与日志截图位</div>
+            <div class="gallery-meta">
+              <strong>TriCoach / Memory & Logs</strong>
+              <span>把对话沉淀成主题、摘要和历史记录，支持后续多层调用，而不是每次重新开始。</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-frame">VOC Agents Base 截图位</div>
+            <div class="gallery-meta">
+              <strong>VOC Agents / cleaned_voices</strong>
+              <span>展示共享事实层，说明原始消息如何进入结构化表，再供后续分析与需求聚合使用。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        当前版本建议继续补充 4 张截图：TriCoach Dashboard、TriCoach Coach Chat、VOC CLI Init、VOC Report / Base View
+      </div>
+    </div>
+  </body>
+</html>

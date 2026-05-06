@@ -1,0 +1,13 @@
+{
+  "name": "ai-portfolio-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static portfolio site for Railway deployment",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
